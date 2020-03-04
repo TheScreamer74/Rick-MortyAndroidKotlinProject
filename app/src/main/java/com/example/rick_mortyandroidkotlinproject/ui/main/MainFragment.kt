@@ -35,6 +35,10 @@ class MainFragment : Fragment() {
             false
         )
 
+        binding.button.setOnClickListener{
+            viewModel.generateRandomChar()
+        }
+
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         Log.i("MainFragment", "Called ViewModelProviders.of !")
 

@@ -1,27 +1,28 @@
 package com.example.rick_mortyandroidkotlinproject.ui.main
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.rick_mortyandroidkotlinproject.network.RickAndMortyApi
-import com.example.rick_mortyandroidkotlinproject.network.RickAndMortyProperty
+import com.example.rick_mortyandroidkotlinproject.network.properties.RickAndMortyCharactersProperties
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class MainViewModel : ViewModel() {
 
     private var viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
+    private val _count = MutableLiveData<Int>()
+    val count: LiveData<Int>
+        get() = _count
+
     private val _response = MutableLiveData<String>()
     val response : LiveData<String>
         get() = _response
+
 
     private val _name = MutableLiveData<String>()
     val name : LiveData<String>
@@ -53,36 +54,47 @@ class MainViewModel : ViewModel() {
 
     init{
         getTotalCharacter()
-
-        _name.value = "Rick Sanchez"
-        _origin.value = "Earth"
-        _gender.value = "Male"
-        _specie.value = "Human"
-        _lastLocation.value = "Earth"
-        _status.value = "Alive"
-        _image.value = "https://pbs.twimg.com/profile_images/915135928540295168/sSbUnbF3_400x400.jpg"
+        generateRandomChar()
     }
 
-    private fun getTotalCharacter() {
-
+     fun getTotalCharacter() {
         coroutineScope.launch {
-            var getPropertiesDeferred = RickAndMortyApi.retrofitService.getProperties()
+            var getCharactersListDeferred = RickAndMortyApi.retrofitService.getCharactersList()
             try {
-                var result = getPropertiesDeferred.await()
-                _response.value = "Success: ${result.toString()} blblbl"
+                var result = getCharactersListDeferred.await()
+                _count.value = result.info.count
             }
             catch(t: Throwable){
-                _response.value = "Failure" + t.message
+
             }
         }
     }
 
     override fun onCleared() {
         super.onCleared()
-        Log.i("MainViewModel", "GameViewModel destroyed")
+        viewModelJob.cancel()
     }
 
     fun onNewSearch() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    fun generateRandomChar() {
+        coroutineScope.launch {
+            var getCharacterDeferred = RickAndMortyApi.retrofitService.getCharacter((1..(count.value?: 100)).random())
+            try {
+                var result = getCharacterDeferred.await()
+                _name.value = result.name
+                _status.value = result.status
+                _gender.value = result.gender
+                _image.value = result.image
+                _lastLocation.value = result.location.name
+                _specie.value = result.species
+                _origin.value = result.origin.name
+
+            }catch (t: Throwable){
+
+            }
+        }
     }
 }
