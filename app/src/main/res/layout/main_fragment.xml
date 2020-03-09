@@ -14,76 +14,19 @@
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#000000"
         tools:context=".ui.main.MainFragment">
 
         <TextView
             android:id="@+id/main_fragment_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/RickAndMortyStyle"
             android:text="The Rick and Morty API"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.12" />
-
-        <EditText
-            android:id="@+id/main_fragment_search"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Enter keywords"
-            android:inputType="textPersonName"
-            app:layout_constraintBaseline_toBaselineOf="@+id/main_fragment_search_button"
-            app:layout_constraintEnd_toStartOf="@+id/main_fragment_search_button"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <RadioGroup
-            android:id="@+id/select_search_radio_group"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.8">
-
-            <RadioButton
-                android:id="@+id/character_radio_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="Characters" />
-
-            <RadioButton
-                android:id="@+id/location_radio_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Location" />
-
-            <RadioButton
-                android:id="@+id/episode_radio_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Episodes" />
-        </RadioGroup>
-
-        <Button
-            android:id="@+id/main_fragment_search_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="@{() -> mainViewModel.onNewSearch() }"
-            android:text="@android:string/search_go"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/main_fragment_search"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.9" />
+            app:layout_constraintVertical_bias="0.0" />
 
         <ImageView
             android:id="@+id/main_fragment_character_image"
@@ -91,7 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:src="@{mainViewModel.image}"
+            app:image="@{mainViewModel.image}"
             app:layout_constraintBottom_toTopOf="@+id/main_fragment_name_character"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -103,13 +46,17 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="138dp"
             android:layout_marginEnd="16dp"
             android:text="@{@string/format_string_name(mainViewModel.name)}"
+            android:textAppearance="@style/RickAndMortyStyle"
             app:layout_constraintBottom_toTopOf="@+id/main_fragment_status_character"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/main_fragment_character_image" />
+            app:layout_constraintTop_toBottomOf="@+id/main_fragment_title"
+            app:layout_constraintVertical_bias="1.0"
+            app:layout_constraintVertical_chainStyle="packed" />
 
         <TextView
             android:id="@+id/main_fragment_status_character"
@@ -118,6 +65,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:text="@{@string/format_string_status(mainViewModel.status)}"
+            android:textAppearance="@style/RickAndMortyStyle"
             app:layout_constraintBottom_toTopOf="@+id/main_fragment_species_character"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -130,6 +78,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:text="@{@string/format_string_species(mainViewModel.specie)}"
+            android:textAppearance="@style/RickAndMortyStyle"
             app:layout_constraintBottom_toTopOf="@+id/main_fragment_gender_character"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -142,6 +91,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:text="@{@string/format_string_gender(mainViewModel.gender)}"
+            android:textAppearance="@style/RickAndMortyStyle"
             app:layout_constraintBottom_toTopOf="@+id/main_fragment_origin_character"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -154,6 +104,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:text="@{@string/format_string_origin(mainViewModel.origin)}"
+            android:textAppearance="@style/RickAndMortyStyle"
             app:layout_constraintBottom_toTopOf="@+id/main_fragment_last_location_character"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -166,20 +117,47 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:text="@{@string/format_string_last_location(mainViewModel.lastLocation)}"
-            app:layout_constraintBottom_toTopOf="@+id/select_search_radio_group"
+            android:textAppearance="@style/RickAndMortyStyle"
+            app:layout_constraintBottom_toTopOf="@id/main_fragment_random_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/main_fragment_origin_character" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/main_fragment_random_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Generate a random char"
-            app:layout_constraintBottom_toTopOf="@+id/select_search_radio_group"
+            app:layout_constraintBottom_toTopOf="@+id/main_fragment_button_character"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/main_fragment_last_location_character" />
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/main_fragment_button_character"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="All characters"
+            app:layout_constraintBottom_toTopOf="@+id/main_fragment_button_location"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/main_fragment_button_episode"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="All episodes"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/main_fragment_button_location"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="All locations"
+            app:layout_constraintBottom_toTopOf="@+id/main_fragment_button_episode"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

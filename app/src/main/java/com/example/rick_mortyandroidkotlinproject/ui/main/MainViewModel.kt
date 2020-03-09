@@ -1,10 +1,14 @@
 package com.example.rick_mortyandroidkotlinproject.ui.main
 
+import android.app.Activity
+import android.view.View
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.navigation.findNavController
+import com.example.rick_mortyandroidkotlinproject.R
 import com.example.rick_mortyandroidkotlinproject.network.RickAndMortyApi
-import com.example.rick_mortyandroidkotlinproject.network.properties.RickAndMortyCharactersProperties
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -60,6 +64,7 @@ class MainViewModel : ViewModel() {
 
      fun getTotalCharacter() {
         coroutineScope.launch {
+
             var getCharactersListDeferred = RickAndMortyApi.retrofitService.getCharactersList()
             try {
                 var result = getCharactersListDeferred.await()
@@ -76,13 +81,9 @@ class MainViewModel : ViewModel() {
         viewModelJob.cancel()
     }
 
-    fun onNewSearch() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
     fun generateRandomChar() {
         coroutineScope.launch {
-            var getCharacterDeferred = RickAndMortyApi.retrofitService.getCharacter((1..(count.value?: 100)).random())
+            var getCharacterDeferred = RickAndMortyApi.retrofitService.getCharacter((1..(count.value?: 1)).random())
             try {
                 var result = getCharacterDeferred.await()
                 _name.value = result.name
@@ -97,5 +98,9 @@ class MainViewModel : ViewModel() {
 
             }
         }
+    }
+
+    fun switchOnCharacterFragment(view: View) {
+        view.findNavController().navigate(R.id.action_mainFragment_to_characterFragment)
     }
 }

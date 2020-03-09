@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import com.example.rick_mortyandroidkotlinproject.R
 import com.example.rick_mortyandroidkotlinproject.databinding.MainFragmentBinding
 import com.squareup.picasso.Picasso
@@ -23,6 +25,8 @@ class MainFragment : Fragment() {
 
     private lateinit var binding: MainFragmentBinding
 
+
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
         binding = DataBindingUtil.inflate(
@@ -32,24 +36,22 @@ class MainFragment : Fragment() {
             false
         )
 
-        binding.button.setOnClickListener{
+
+
+        binding.mainFragmentRandomButton.setOnClickListener{
             viewModel.generateRandomChar()
         }
 
+        binding.mainFragmentButtonCharacter.setOnClickListener{
+            viewModel.switchOnCharacterFragment(it)
+        }
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
 
         binding.mainViewModel = viewModel
-        binding.setLifecycleOwner(this)
+        binding.lifecycleOwner = this
 
 
-       /************************************************************/
-
-        viewModel.image.observe(viewLifecycleOwner, Observer { newURLImage ->
-            Picasso.get().load(newURLImage).into(binding.mainFragmentCharacterImage)
-        })
-
-        /************************************************************/
 
         return binding.root
 
