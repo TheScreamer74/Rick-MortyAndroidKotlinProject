@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.rick_mortyandroidkotlinproject.databinding.CharacterItemViewBinding
 import com.example.rick_mortyandroidkotlinproject.network.properties.RickAndMortyCharacterProperties
 
-class CharacterListAdapter: ListAdapter<RickAndMortyCharacterProperties, CharacterListAdapter.CharacterItemViewHolder>(DiffCallback) {
+class CharacterListAdapter(private val onClickListener: OnClickListener): ListAdapter<RickAndMortyCharacterProperties, CharacterListAdapter.CharacterItemViewHolder>(DiffCallback) {
 
     class CharacterItemViewHolder(private var binding: CharacterItemViewBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind (rickAndMortyCharacterProperties: RickAndMortyCharacterProperties){
@@ -38,6 +38,7 @@ class CharacterListAdapter: ListAdapter<RickAndMortyCharacterProperties, Charact
         parent: ViewGroup,
         viewType: Int
     ): CharacterItemViewHolder {
+
        return CharacterItemViewHolder(CharacterItemViewBinding.inflate(LayoutInflater.from(parent.context)))
     }
 
@@ -46,6 +47,13 @@ class CharacterListAdapter: ListAdapter<RickAndMortyCharacterProperties, Charact
         position: Int
     ) {
         val rickAndMortyCharacterProperties = getItem(position)
+        holder.itemView.setOnClickListener{
+            onClickListener.onClick(rickAndMortyCharacterProperties.id)
+        }
         holder.bind(rickAndMortyCharacterProperties)
+    }
+
+    class OnClickListener(val clickListener: (characterId: Int) -> Unit) {
+        fun onClick(characterId:Int) = clickListener(characterId)
     }
 }

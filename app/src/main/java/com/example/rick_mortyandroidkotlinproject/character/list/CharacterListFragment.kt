@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.rick_mortyandroidkotlinproject.R
 import com.example.rick_mortyandroidkotlinproject.databinding.FragmentListCharactersBinding
 
@@ -38,7 +39,9 @@ class CharacterListFragment : Fragment() {
 
         binding.viewModel = viewModel
 
-        binding.characterList.adapter = CharacterListAdapter()
+        binding.characterList.adapter = CharacterListAdapter(CharacterListAdapter.OnClickListener {
+            switchOnCharacterDetailFragment(it)
+        })
 
         binding.fragmentListCharacterBtnNext.setOnClickListener{
             viewModel.nextPage(it)
@@ -52,6 +55,10 @@ class CharacterListFragment : Fragment() {
 
         return binding.root
 
+    }
+
+    fun switchOnCharacterDetailFragment(id: Int) {
+        this.findNavController().navigate(CharacterListFragmentDirections.actionCharacterListFragmentToCharacterDetailFragment(id))
     }
 
 

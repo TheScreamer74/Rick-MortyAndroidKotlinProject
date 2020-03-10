@@ -34,12 +34,31 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            app:image="@{mainViewModel.image}"
+            android:layout_marginBottom="32dp"
+            app:image="@{mainViewModel.character.image}"
             app:layout_constraintBottom_toTopOf="@+id/main_fragment_name_character"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/main_fragment_title"
+            app:layout_constraintVertical_bias="1.0"
             app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/main_fragment_last_location_character"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="@{@string/format_string_last_location(mainViewModel.character.location.name)}"
+            android:textAlignment="center"
+            android:textAppearance="@style/RickAndMortyStyle"
+            app:layout_constraintBottom_toTopOf="@id/main_fragment_random_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/main_fragment_origin_character" />
 
         <TextView
             android:id="@+id/main_fragment_name_character"
@@ -48,7 +67,8 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="138dp"
             android:layout_marginEnd="16dp"
-            android:text="@{@string/format_string_name(mainViewModel.name)}"
+            android:text="@{@string/format_string_name(mainViewModel.character.name)}"
+            android:textAlignment="center"
             android:textAppearance="@style/RickAndMortyStyle"
             app:layout_constraintBottom_toTopOf="@+id/main_fragment_status_character"
             app:layout_constraintEnd_toEndOf="parent"
@@ -59,30 +79,34 @@
             app:layout_constraintVertical_chainStyle="packed" />
 
         <TextView
-            android:id="@+id/main_fragment_status_character"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:text="@{@string/format_string_status(mainViewModel.status)}"
-            android:textAppearance="@style/RickAndMortyStyle"
-            app:layout_constraintBottom_toTopOf="@+id/main_fragment_species_character"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/main_fragment_name_character" />
-
-        <TextView
             android:id="@+id/main_fragment_species_character"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:text="@{@string/format_string_species(mainViewModel.specie)}"
+            android:text="@{@string/format_string_species(mainViewModel.character.species)}"
+            android:textAlignment="center"
             android:textAppearance="@style/RickAndMortyStyle"
             app:layout_constraintBottom_toTopOf="@+id/main_fragment_gender_character"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/main_fragment_status_character" />
+
+        <TextView
+            android:id="@+id/main_fragment_status_character"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="@{@string/format_string_status(mainViewModel.character.status)}"
+            android:textAlignment="center"
+            android:textAppearance="@style/RickAndMortyStyle"
+            app:layout_constraintBottom_toTopOf="@+id/main_fragment_species_character"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/main_fragment_name_character" />
 
         <TextView
             android:id="@+id/main_fragment_gender_character"
@@ -90,10 +114,12 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:text="@{@string/format_string_gender(mainViewModel.gender)}"
+            android:text="@{@string/format_string_gender(mainViewModel.character.gender)}"
+            android:textAlignment="center"
             android:textAppearance="@style/RickAndMortyStyle"
             app:layout_constraintBottom_toTopOf="@+id/main_fragment_origin_character"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/main_fragment_species_character" />
 
@@ -103,30 +129,20 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:text="@{@string/format_string_origin(mainViewModel.origin)}"
+            android:text="@{@string/format_string_origin(mainViewModel.character.origin.name)}"
+            android:textAlignment="center"
             android:textAppearance="@style/RickAndMortyStyle"
             app:layout_constraintBottom_toTopOf="@+id/main_fragment_last_location_character"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/main_fragment_gender_character" />
-
-        <TextView
-            android:id="@+id/main_fragment_last_location_character"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:text="@{@string/format_string_last_location(mainViewModel.lastLocation)}"
-            android:textAppearance="@style/RickAndMortyStyle"
-            app:layout_constraintBottom_toTopOf="@id/main_fragment_random_button"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/main_fragment_origin_character" />
 
         <Button
             android:id="@+id/main_fragment_random_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
             android:text="Generate a random char"
             app:layout_constraintBottom_toTopOf="@+id/main_fragment_button_character"
             app:layout_constraintEnd_toEndOf="parent"
@@ -158,6 +174,21 @@
             app:layout_constraintBottom_toTopOf="@+id/main_fragment_button_episode"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/main_fragment_button_detail_character"
+            android:layout_width="0dp"
+            android:layout_height="420dp"
+            android:alpha="0"
+            android:background="#00FFFFFF"
+            android:textColor="#00FFFFFF"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.25" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

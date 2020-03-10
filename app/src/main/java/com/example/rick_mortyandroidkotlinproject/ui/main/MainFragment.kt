@@ -54,12 +54,15 @@ class MainFragment : Fragment() {
             viewModel.switchOnEpisodeListFragment(it)
         }
 
+        binding.mainFragmentButtonDetailCharacter.setOnClickListener{
+            viewModel.switchOnCharacterDetailFragment(it)
+        }
+
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
 
         binding.mainViewModel = viewModel
         binding.lifecycleOwner = this
-
 
 
         return binding.root

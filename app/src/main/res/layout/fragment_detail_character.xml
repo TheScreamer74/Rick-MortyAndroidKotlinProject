@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.rick_mortyandroidkotlinproject.character.detail.CharacterDetailViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/background_dark">
+
+        <ImageView
+            android:id="@+id/fragment_character_detail_image"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            app:image="@{viewModel.character.image}"
+            app:layout_constraintBottom_toTopOf="@+id/fragment_character_detail_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/fragment_character_detail_gender"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="@{@string/format_string_gender(viewModel.character.gender)}"
+            android:textAlignment="center"
+            android:textAppearance="@style/RickAndMortyStyle"
+            app:layout_constraintBottom_toTopOf="@+id/fragment_character_detail_origin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_character_detail_type" />
+
+        <TextView
+            android:id="@+id/fragment_character_detail_status"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="@{@string/format_string_status(viewModel.character.status)}"
+            android:textAlignment="center"
+            android:textAppearance="@style/RickAndMortyStyle"
+            app:layout_constraintBottom_toTopOf="@+id/fragment_character_detail_species"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_character_detail_name" />
+
+        <TextView
+            android:id="@+id/fragment_character_detail_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="@{@string/format_string_name(viewModel.character.name)}"
+            android:textAlignment="center"
+            android:textAppearance="@style/RickAndMortyStyle"
+            app:layout_constraintBottom_toTopOf="@+id/fragment_character_detail_status"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/fragment_character_detail_species"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="@{@string/format_string_species(viewModel.character.species)}"
+            android:textAlignment="center"
+            android:textAppearance="@style/RickAndMortyStyle"
+            app:layout_constraintBottom_toTopOf="@+id/fragment_character_detail_type"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_character_detail_status" />
+
+        <TextView
+            android:id="@+id/fragment_character_detail_type"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="@{@string/format_string_type(viewModel.character.type)}"
+            android:textAlignment="center"
+            android:textAppearance="@style/RickAndMortyStyle"
+            app:layout_constraintBottom_toTopOf="@+id/fragment_character_detail_gender"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_character_detail_species" />
+
+        <TextView
+            android:id="@+id/fragment_character_detail_location"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="@{@string/format_string_last_location(viewModel.character.location.name)}"
+            android:textAlignment="center"
+            android:textAppearance="@style/RickAndMortyStyle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_character_detail_origin" />
+
+        <TextView
+            android:id="@+id/fragment_character_detail_origin"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="@{@string/format_string_origin(viewModel.character.origin.name)}"
+            android:textAlignment="center"
+            android:textAppearance="@style/RickAndMortyStyle"
+            app:layout_constraintBottom_toTopOf="@+id/fragment_character_detail_location"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_character_detail_gender" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

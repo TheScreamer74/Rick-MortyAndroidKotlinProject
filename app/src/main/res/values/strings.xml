@@ -6,4 +6,5 @@
     <string name="format_string_last_location">Last location : %s</string>
     <string name="format_string_status">Status : %s</string>
     <string name="format_string_species">Specie : %s</string>
+    <string name="format_string_type">Type : %s</string>
 </resources>

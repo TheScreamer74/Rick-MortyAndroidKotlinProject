@@ -4,8 +4,10 @@ import android.view.View
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.navigation.findNavController
 import com.example.rick_mortyandroidkotlinproject.network.RickAndMortyApi
 import com.example.rick_mortyandroidkotlinproject.network.properties.RickAndMortyCharacterProperties
+import com.example.rick_mortyandroidkotlinproject.ui.main.MainFragmentDirections
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -64,4 +66,7 @@ class CharacterListViewModel : ViewModel() {
             view.isEnabled = false
         }
     }
+
+
+
 }
