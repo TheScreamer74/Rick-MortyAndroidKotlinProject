@@ -1,6 +1,9 @@
 package com.example.rick_mortyandroidkotlinproject.network
 
 
+
+import com.example.rick_mortyandroidkotlinproject.network.properties.EpisodesProperties
+import com.example.rick_mortyandroidkotlinproject.network.properties.LocationsProperties
 import com.example.rick_mortyandroidkotlinproject.network.properties.RickAndMortyCharacterProperties
 import com.example.rick_mortyandroidkotlinproject.network.properties.RickAndMortyCharactersProperties
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
@@ -26,10 +29,9 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface RickAndMortyApiService{
-    @GET("character")
+    @GET("character/")
     fun getCharactersList():
             Deferred<RickAndMortyCharactersProperties>
-
 
     @GET("character/")
     fun getCharactersListWithPage(@Query("page") numPage: Int):
@@ -39,6 +41,13 @@ interface RickAndMortyApiService{
     fun getCharacter(@Path("id") charId: Int):
             Deferred<RickAndMortyCharacterProperties>
 
+    @GET("location/")
+    fun getLocationListWithPage(@Query("page") numPage: Int):
+            Deferred<LocationsProperties>
+
+    @GET("episode/")
+    fun getEpisodeListWithPage(@Query("page") numPage: Int):
+            Deferred<EpisodesProperties>
 }
 
 object RickAndMortyApi{

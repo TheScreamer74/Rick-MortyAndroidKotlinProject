@@ -100,7 +100,17 @@ class MainViewModel : ViewModel() {
         }
     }
 
-    fun switchOnCharacterFragment(view: View) {
-        view.findNavController().navigate(R.id.action_mainFragment_to_characterFragment)
+    fun switchOnCharacterListFragment(view: View) {
+        view.findNavController().navigate(R.id.action_mainFragment_to_characterListFragment)
+    }
+
+    fun switchOnLocationListFragment(view: View) {
+        view.findNavController().navigate(R.id.action_mainFragment_to_locationListFragment)
+
+    }
+
+    fun switchOnEpisodeListFragment(view: View) {
+        view.findNavController().navigate(R.id.action_mainFragment_to_episodeListFragment)
+
     }
 }

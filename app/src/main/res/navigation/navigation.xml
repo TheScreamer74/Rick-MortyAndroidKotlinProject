@@ -11,11 +11,25 @@
         android:label="main_fragment"
         tools:layout="@layout/main_fragment" >
         <action
-            android:id="@+id/action_mainFragment_to_characterFragment"
-            app:destination="@id/characterFragment" />
+            android:id="@+id/action_mainFragment_to_characterListFragment"
+            app:destination="@id/characterListFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_locationListFragment"
+            app:destination="@id/locationListFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_episodeListFragment"
+            app:destination="@id/episodeListFragment" />
     </fragment>
     <fragment
-        android:id="@+id/characterFragment"
-        android:name="com.example.rick_mortyandroidkotlinproject.characterList.CharacterFragment"
-        android:label="CharacterFragment" />
+        android:id="@+id/characterListFragment"
+        android:name="com.example.rick_mortyandroidkotlinproject.characterList.CharacterListFragment"
+        android:label="CharacterListFragment" />
+    <fragment
+        android:id="@+id/locationListFragment"
+        android:name="com.example.rick_mortyandroidkotlinproject.locations.list.LocationListFragment"
+        android:label="LocationListFragment" />
+    <fragment
+        android:id="@+id/episodeListFragment"
+        android:name="com.example.rick_mortyandroidkotlinproject.episodes.list.EpisodeListFragment"
+        android:label="EpisodeListFragment" />
 </navigation>

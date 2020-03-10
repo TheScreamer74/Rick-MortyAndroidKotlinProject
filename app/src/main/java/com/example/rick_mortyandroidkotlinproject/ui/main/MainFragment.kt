@@ -43,8 +43,17 @@ class MainFragment : Fragment() {
         }
 
         binding.mainFragmentButtonCharacter.setOnClickListener{
-            viewModel.switchOnCharacterFragment(it)
+            viewModel.switchOnCharacterListFragment(it)
         }
+
+        binding.mainFragmentButtonLocation.setOnClickListener{
+            viewModel.switchOnLocationListFragment(it)
+        }
+
+        binding.mainFragmentButtonEpisode.setOnClickListener{
+            viewModel.switchOnEpisodeListFragment(it)
+        }
+
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
 

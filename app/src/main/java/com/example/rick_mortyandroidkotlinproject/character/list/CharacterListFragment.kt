@@ -6,19 +6,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.rick_mortyandroidkotlinproject.R
 import com.example.rick_mortyandroidkotlinproject.databinding.FragmentListCharactersBinding
 
-class CharacterFragment : Fragment() {
+class CharacterListFragment : Fragment() {
 
 
     companion object {
-        fun newInstance() = CharacterFragment()
+        fun newInstance() = CharacterListFragment()
     }
 
-    private lateinit var viewModel: CharacterViewModel
+    private lateinit var viewModel: CharacterListViewModel
 
     private lateinit var binding: FragmentListCharactersBinding
 
@@ -33,7 +32,7 @@ class CharacterFragment : Fragment() {
             false
         )
 
-        viewModel = ViewModelProvider(this).get(CharacterViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(CharacterListViewModel::class.java)
 
         binding.lifecycleOwner = this
 

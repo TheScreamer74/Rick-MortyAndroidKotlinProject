@@ -1,6 +1,6 @@
 package com.example.rick_mortyandroidkotlinproject.network.properties
 
-import com.example.rick_mortyandroidkotlinproject.classes.Location
+import com.example.rick_mortyandroidkotlinproject.classes.LocationBrief
 import com.example.rick_mortyandroidkotlinproject.classes.Origin
 
 class RickAndMortyCharacterProperties(
@@ -11,7 +11,7 @@ class RickAndMortyCharacterProperties(
     val type: String,
     val gender: String,
     val origin: Origin,
-    val location: Location,
+    val location: LocationBrief,
     val image: String,
     val episode: List<String>,
     val url: String,

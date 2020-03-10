@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.rick_mortyandroidkotlinproject.characterList.CharacterListViewModel"/>
+            type="com.example.rick_mortyandroidkotlinproject.episodes.list.EpisodeListViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,21 +15,19 @@
         android:background="@android:color/background_dark">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/page_episode"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:text="@{viewModel.page.toString()}"
             android:textAlignment="center"
             android:textAppearance="@style/RickAndMortyStyle"
+            android:text="@{viewModel.page.toString()}"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/fragment_list_character_btn_next"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@id/fragment_list_character_btn_pevious"
-            app:layout_constraintTop_toBottomOf="@+id/character_list"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintEnd_toStartOf="@id/fragment_list_episode_btn_next"
+            app:layout_constraintStart_toEndOf="@id/fragment_list_episode_btn_pevious"
+            app:layout_constraintTop_toBottomOf="@+id/episode_list" />
 
         <Button
-            android:id="@+id/fragment_list_character_btn_pevious"
+            android:id="@+id/fragment_list_episode_btn_pevious"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:enabled="false"
@@ -38,7 +36,7 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
-            android:id="@+id/fragment_list_character_btn_next"
+            android:id="@+id/fragment_list_episode_btn_next"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:text="Next"
@@ -46,16 +44,16 @@
             app:layout_constraintEnd_toEndOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/character_list"
+            android:id="@+id/episode_list"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintBottom_toTopOf="@id/fragment_list_character_btn_next"
+            app:layout_constraintBottom_toTopOf="@id/fragment_list_episode_btn_next"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:listDataCharacter="@{viewModel.characters}"
+            app:listDataEpisode="@{viewModel.episodes}"
             tools:itemCount="16"
             tools:listitem="@layout/character_item_view">
 
