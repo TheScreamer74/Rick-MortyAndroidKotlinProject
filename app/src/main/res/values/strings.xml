@@ -10,4 +10,5 @@
     <string name="format_string_air_date">Air date : %s</string>
     <string name="format_string_episode">Episode : %s</string>
     <string name="format_string_dimension">Dimension : %s</string>
+    <string name="format_string_page">Page : %1d/%2d</string>
 </resources>

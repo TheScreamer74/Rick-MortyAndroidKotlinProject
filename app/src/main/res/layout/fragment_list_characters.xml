@@ -18,7 +18,7 @@
             android:id="@+id/textView"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:text="@{viewModel.page.toString()}"
+            android:text="@{@string/format_string_page(viewModel.page, viewModel.pages)}"
             android:textAlignment="center"
             android:textAppearance="@style/RickAndMortyStyle"
             app:layout_constraintBottom_toBottomOf="parent"

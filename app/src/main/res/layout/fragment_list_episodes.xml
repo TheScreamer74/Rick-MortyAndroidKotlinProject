@@ -20,7 +20,7 @@
             android:layout_height="0dp"
             android:textAlignment="center"
             android:textAppearance="@style/RickAndMortyStyle"
-            android:text="@{viewModel.page.toString()}"
+            android:text="@{@string/format_string_page(viewModel.page, viewModel.pages)}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/fragment_list_episode_btn_next"
             app:layout_constraintStart_toEndOf="@id/fragment_list_episode_btn_pevious"
