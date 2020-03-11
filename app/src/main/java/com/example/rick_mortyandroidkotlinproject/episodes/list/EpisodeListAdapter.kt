@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.rick_mortyandroidkotlinproject.databinding.EpisodeItemViewBinding
 import com.example.rick_mortyandroidkotlinproject.network.properties.Episode
 
-class EpisodeListAdapter: ListAdapter<Episode, EpisodeListAdapter.EpisodeItemViewHolder>(DiffCallback) {
+class EpisodeListAdapter(private val onClickListener: OnClickListener): ListAdapter<Episode, EpisodeListAdapter.EpisodeItemViewHolder>(DiffCallback) {
 
     companion object DiffCallback : DiffUtil.ItemCallback<Episode>() {
         override fun areItemsTheSame(oldItem: Episode, newItem: Episode): Boolean {
@@ -32,7 +32,13 @@ class EpisodeListAdapter: ListAdapter<Episode, EpisodeListAdapter.EpisodeItemVie
 
     override fun onBindViewHolder(holder: EpisodeItemViewHolder, position: Int) {
         val episode = getItem(position)
+        holder.itemView.setOnClickListener{
+            onClickListener.onClick(episode.id)
+        }
         holder.bind(episode)
     }
 
+    class OnClickListener(val clickListener: (episodeId: Int) -> Unit) {
+        fun onClick(episodeId:Int) = clickListener(episodeId)
+    }
 }

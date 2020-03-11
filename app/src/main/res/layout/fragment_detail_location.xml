@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.rick_mortyandroidkotlinproject.locations.detail.LocationDetailViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/background_dark">
+
+        <TextView
+            android:id="@+id/fragment_detail_location_type"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="@{@string/format_string_type(viewModel.location.type)}"
+            android:textAlignment="center"
+            android:textAppearance="@style/RickAndMortyStyle"
+            app:layout_constraintBottom_toTopOf="@+id/fragment_detail_location_dimension"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_detail_location_name" />
+
+        <TextView
+            android:id="@+id/fragment_detail_location_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="@{@string/format_string_name(viewModel.location.name)}"
+            android:textAlignment="center"
+            android:textAppearance="@style/RickAndMortyStyle"
+            app:layout_constraintBottom_toTopOf="@+id/fragment_detail_location_type"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/fragment_detail_location_dimension"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="@{@string/format_string_dimension(viewModel.location.dimension)}"
+            android:textAlignment="center"
+            android:textAppearance="@style/RickAndMortyStyle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_detail_location_type" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

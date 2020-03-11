@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.rick_mortyandroidkotlinproject.R
 import com.example.rick_mortyandroidkotlinproject.databinding.FragmentListEpisodesBinding
 
@@ -34,7 +35,9 @@ class EpisodeListFragment: Fragment() {
 
         binding.viewModel = viewModel
 
-        binding.episodeList.adapter = EpisodeListAdapter()
+        binding.episodeList.adapter = EpisodeListAdapter(EpisodeListAdapter.OnClickListener {
+            switchOnEpisodeDetailFragment(it)
+        })
 
         binding.fragmentListEpisodeBtnNext.setOnClickListener{
             viewModel.nextPage(it)
@@ -47,5 +50,9 @@ class EpisodeListFragment: Fragment() {
         }
 
         return binding.root
+    }
+
+    private fun switchOnEpisodeDetailFragment(id: Int) {
+        this.findNavController().navigate(EpisodeListFragmentDirections.actionEpisodeListFragmentToEpisodeDetailFragment(id))
     }
 }

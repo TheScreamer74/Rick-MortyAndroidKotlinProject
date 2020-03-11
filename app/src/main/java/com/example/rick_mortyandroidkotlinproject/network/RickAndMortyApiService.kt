@@ -2,10 +2,7 @@ package com.example.rick_mortyandroidkotlinproject.network
 
 
 
-import com.example.rick_mortyandroidkotlinproject.network.properties.EpisodesProperties
-import com.example.rick_mortyandroidkotlinproject.network.properties.LocationsProperties
-import com.example.rick_mortyandroidkotlinproject.network.properties.RickAndMortyCharacterProperties
-import com.example.rick_mortyandroidkotlinproject.network.properties.RickAndMortyCharactersProperties
+import com.example.rick_mortyandroidkotlinproject.network.properties.*
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -45,9 +42,17 @@ interface RickAndMortyApiService{
     fun getLocationListWithPage(@Query("page") numPage: Int):
             Deferred<LocationsProperties>
 
+    @GET("location/{id}")
+    fun getLocation(@Path("id")locId: Int):
+            Deferred<Location>
+
     @GET("episode/")
     fun getEpisodeListWithPage(@Query("page") numPage: Int):
             Deferred<EpisodesProperties>
+
+    @GET("episode/{id}")
+    fun getEpisode(@Path("id")locId: Int):
+            Deferred<Episode>
 }
 
 object RickAndMortyApi{

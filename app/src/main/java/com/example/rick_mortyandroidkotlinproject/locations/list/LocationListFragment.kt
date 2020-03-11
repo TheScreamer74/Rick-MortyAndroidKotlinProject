@@ -1,5 +1,6 @@
 package com.example.rick_mortyandroidkotlinproject.locations.list
 
+import android.location.Location
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +8,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.rick_mortyandroidkotlinproject.R
 import com.example.rick_mortyandroidkotlinproject.databinding.FragmentListLocationsBinding
 
@@ -37,7 +39,9 @@ class LocationListFragment : Fragment() {
 
         binding.viewModel = viewModel
 
-        binding.locationList.adapter = LocationListAdapter()
+        binding.locationList.adapter = LocationListAdapter(LocationListAdapter.OnClickListener {
+            switchOnLocationDetailFragment(it)
+        })
 
         binding.fragmentListLocationBtnNext.setOnClickListener{
             viewModel.nextPage(it)
@@ -52,6 +56,10 @@ class LocationListFragment : Fragment() {
 
         return binding.root
 
+    }
+
+    private fun switchOnLocationDetailFragment(id: Int) {
+        this.findNavController().navigate(LocationListFragmentDirections.actionLocationListFragmentToLocationDetailFragment(id))
     }
 
 }

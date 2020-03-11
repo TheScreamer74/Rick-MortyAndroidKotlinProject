@@ -34,17 +34,41 @@
     <fragment
         android:id="@+id/locationListFragment"
         android:name="com.example.rick_mortyandroidkotlinproject.locations.list.LocationListFragment"
-        android:label="LocationListFragment" />
+        android:label="LocationListFragment" >
+        <action
+            android:id="@+id/action_locationListFragment_to_locationDetailFragment"
+            app:destination="@id/locationDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/episodeListFragment"
         android:name="com.example.rick_mortyandroidkotlinproject.episodes.list.EpisodeListFragment"
-        android:label="EpisodeListFragment" />
+        android:label="EpisodeListFragment" >
+        <action
+            android:id="@+id/action_episodeListFragment_to_episodeDetailFragment"
+            app:destination="@id/episodeDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/characterDetailFragment"
         android:name="com.example.rick_mortyandroidkotlinproject.character.detail.CharacterDetailFragment"
         android:label="CharacterDetailFragment" >
         <argument
             android:name="character_id"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/episodeDetailFragment"
+        android:name="com.example.rick_mortyandroidkotlinproject.episodes.detail.EpisodeDetailFragment"
+        android:label="EpisodeDetailFragment" >
+        <argument
+            android:name="episode_id"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/locationDetailFragment"
+        android:name="com.example.rick_mortyandroidkotlinproject.locations.detail.LocationDetailFragment"
+        android:label="LocationDetailFragment" >
+        <argument
+            android:name="location_id"
             app:argType="integer" />
     </fragment>
 </navigation>

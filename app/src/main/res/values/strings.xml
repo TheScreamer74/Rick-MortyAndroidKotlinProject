@@ -7,4 +7,7 @@
     <string name="format_string_status">Status : %s</string>
     <string name="format_string_species">Specie : %s</string>
     <string name="format_string_type">Type : %s</string>
+    <string name="format_string_air_date">Air date : %s</string>
+    <string name="format_string_episode">Episode : %s</string>
+    <string name="format_string_dimension">Dimension : %s</string>
 </resources>
